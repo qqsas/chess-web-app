@@ -1,0 +1,118 @@
+/* Container for the chessboard */
+#chessboard {
+  display: grid;
+  grid-template-columns: repeat(8, 60px);
+  grid-template-rows: repeat(8, 60px);
+  width: 480px;
+  height: 480px;
+  border: 2px solid #333;
+  margin: 20px auto;
+  user-select: none; /* prevent text selection while dragging */
+  background-color: #f0d9b5; /* light color fallback */
+}
+
+/* Each square */
+.square {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+/* Light and dark squares */
+.square.light {
+  background-color: #f0d9b5;
+}
+
+.square.dark {
+  background-color: #b58863;
+}
+
+/* Highlight selected square */
+.square.selected {
+  outline: 3px solid #3a86ff;
+  z-index: 1;
+}
+
+/* Highlight squares in check */
+.square.check {
+  box-shadow: 0 0 15px 5px red inset;
+}
+
+/* Piece styles */
+.piece {
+  user-select: none; /* prevent selecting piece text */
+  font-size: 40px;
+  line-height: 60px;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+/* Buttons container */
+button {
+  padding: 8px 15px;
+  margin: 0 5px;
+  background-color: #3a86ff;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+button:hover {
+  background-color: #265cbe;
+}
+
+/* Move history container */
+#moveHistory {
+  width: 480px;
+  max-height: 200px;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid #999;
+  background-color: #f9f9f9;
+  font-family: monospace;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  user-select: text;
+}
+
+/* Responsive tweak: smaller board on narrow screens */
+@media (max-width: 500px) {
+  #chessboard {
+    grid-template-columns: repeat(8, 40px);
+    grid-template-rows: repeat(8, 40px);
+    width: 320px;
+    height: 320px;
+  }
+
+  .square {
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+    line-height: 40px;
+  }
+
+  #moveHistory {
+    width: 320px;
+  }
+}
+
+#joinRoomInput {
+  width: 120px;
+  padding: 6px 8px;
+  margin-left: 10px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 16px;
+}
